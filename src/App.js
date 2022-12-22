@@ -2,27 +2,32 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import Movie from './Movie';
 import Filter from './Filter';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
   //Piece of state
-  const [popular, setPopular] = useState([]); //stores the data
-  const [filtered, setFiltered] = useState([]); // a new state to store filtered values
-  const [activeGenre, setActiveGenre] = useState(0); // Genre is represented by a number from the API hence '0' in useState (35 = comedy & Action = 28, 0 is nothing)
+  const [popular, setPopular] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [activeGenre, setActiveGenre] = useState(0);
 
   useEffect(() => {
-    //When the component is rendered, run fetchPopular()
     fetchPopular();
   }, []);
 
   const fetchPopular = async () => {
-    const data = await fetch(
-      'https://api.themoviedb.org/3/movie/popular?api_key=14ca71028f35704fbfb7151ec4bc3e1b&language=en-US' //Grab data from API
-    );
-    const movies = await data.json(); //put data into JSON
-
-    setPopular(movies.results); //sets 'popular' with all the object results from the API
-    setFiltered(movies.results); //sets 'Filtered' with all the object results from the API (a duplicate)
+    let movies = [];
+    for (let i = 1; i <= 5; i++) {
+      const data = await fetch(
+        `https://api.themoviedb.org/3/movie/popular?api_key=14ca71028f35704fbfb7151ec4bc3e1b&language=en-US&page=${i}`
+      );
+      const pageData = await data.json();
+      movies = [
+        ...movies,
+        ...pageData.results.filter((movie) => movie.backdrop_path !== null),
+      ];
+    }
+    setPopular(movies);
+    setFiltered(movies);
   };
 
   return (
@@ -34,11 +39,13 @@ function App() {
         activeGenre={activeGenre}
         setActiveGenre={setActiveGenre}
       />
-      <div className='popular-movies'>
-        {filtered.map((movie) => {
-          return <Movie key={movie.id} movie={movie} />;
-        })}
-      </div>
+      <motion.div layout className='popular-movies'>
+        <AnimatePresence>
+          {filtered.map((movie) => {
+            return <Movie key={movie.id} movie={movie} />;
+          })}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }

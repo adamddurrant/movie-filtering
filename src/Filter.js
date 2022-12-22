@@ -12,11 +12,11 @@ export default function ({
       setFiltered(popular); //if activeGenre is 0 do nothing or setFiltered to all movies
       return;
     }
+
     const filtered = popular.filter(
-      (
-        movie // otherwise filter popular (all data) to include only movies with the genre IDs included in activeGenre
-      ) => movie.genre_ids.includes(activeGenre)
+      (movie) => movie.genre_ids.includes(activeGenre) // otherwise filter popular (all data) to include only movies with the genre IDs included in activeGenre
     );
+
     setFiltered(filtered);
   }, [activeGenre]); // the square brackets here will trigger useEffect function to run ONLY when activeGenre() changes
 
