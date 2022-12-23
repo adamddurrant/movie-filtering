@@ -28,20 +28,37 @@ export default function ({
       >
         All
       </button>
-      <button
-        className={activeGenre === 35 ? 'active' : ''}
-        onClick={() => setActiveGenre(35)}
-      >
-        Comedy
-      </button>
-      {/* comedy genre is '35' in the API */}
+
       <button
         className={activeGenre === 28 ? 'active' : ''}
         onClick={() => setActiveGenre(28)}
       >
         Action
       </button>
-      {/* action genre is '28' in the API */}
+      <button
+        className={activeGenre === 16 ? 'active' : ''}
+        onClick={() => setActiveGenre(16)}
+      >
+        Animation
+      </button>
+      <button
+        className={activeGenre === 35 ? 'active' : ''}
+        onClick={() => setActiveGenre(35)}
+      >
+        Comedy
+      </button>
+      <button
+        className={activeGenre === 53 ? 'active' : ''}
+        onClick={() => setActiveGenre(53)}
+      >
+        Thriller
+      </button>
+      <button
+        className={activeGenre === 27 ? 'active' : ''}
+        onClick={() => setActiveGenre(27)}
+      >
+        Horror
+      </button>
     </div>
   );
 }

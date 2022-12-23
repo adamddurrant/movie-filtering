@@ -5,7 +5,7 @@ import Filter from './Filter';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
-  //Piece of state
+  //State management
   const [popular, setPopular] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [activeGenre, setActiveGenre] = useState(0);
@@ -31,8 +31,17 @@ function App() {
   };
 
   return (
-    //The props being passed in the filter component call include the state variables and set state functions - this will enable changes to be made in the filter component
     <div className='App'>
+      <div className='header'>
+        <h1>Top 100 Most Popular Movies</h1>
+        <p className='explainer'>
+          The worlds top 100 most popular movies, every week.
+        </p>
+        <p className='disclaimer'>
+          "This product uses the TMDB API but is not endorsed or certified by
+          TMDB."
+        </p>
+      </div>
       <Filter
         popular={popular}
         setFiltered={setFiltered}
@@ -41,8 +50,8 @@ function App() {
       />
       <motion.div layout className='popular-movies'>
         <AnimatePresence>
-          {filtered.map((movie) => {
-            return <Movie key={movie.id} movie={movie} />;
+          {filtered.map((movie, index) => {
+            return <Movie key={movie.id} movie={movie} number={index + 1} />;
           })}
         </AnimatePresence>
       </motion.div>
