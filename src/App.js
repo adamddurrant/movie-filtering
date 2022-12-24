@@ -33,9 +33,12 @@ function App() {
   return (
     <div className='App'>
       <div className='header'>
+        <div className='updated'>
+          <span className='update-text'>Updated every week</span>
+        </div>
         <h1>Top 100 Most Popular Movies</h1>
         <p className='explainer'>
-          The worlds top 100 most popular movies, every week.
+          See the worlds most popular movies in one place.
         </p>
         <p className='disclaimer'>
           "This product uses the TMDB API but is not endorsed or certified by

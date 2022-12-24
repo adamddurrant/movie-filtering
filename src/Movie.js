@@ -19,7 +19,7 @@ export default function Movie({ movie, number }) {
       </div>
       <div className='heading'>
         <div className='rating'>
-          <p>Star {movie.vote_average}</p>
+          <p className='rating-content'>Rating: {movie.vote_average}</p>
         </div>
         <h2>{movie.title}</h2>
         <p>
