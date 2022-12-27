@@ -54,6 +54,7 @@ function App() {
       <motion.div layout className='popular-movies'>
         <AnimatePresence>
           {filtered.map((movie, index) => {
+            //add reduce() in here to prevent duplicates
             return <Movie key={movie.id} movie={movie} number={index + 1} />;
           })}
         </AnimatePresence>

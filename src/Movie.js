@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { format } from 'date-fns';
 
 export default function Movie({ movie, number }) {
   return (
@@ -22,14 +23,7 @@ export default function Movie({ movie, number }) {
           <p className='rating-content'>Rating: {movie.vote_average}</p>
         </div>
         <h2>{movie.title}</h2>
-        <p>
-          {movie.release_date.toLocaleString('en-GB', {
-            day: 'numeric',
-            month: 'short',
-            year: 'numeric',
-            hour: 'numeric',
-          })}
-        </p>
+        <p>{movie.release_date}</p>
       </div>
       <div className='description'>
         <p className='overview'>{movie.overview.substring(0, 100) + '...'}</p>
