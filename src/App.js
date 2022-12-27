@@ -45,20 +45,22 @@ function App() {
           TMDB."
         </p>
       </div>
-      <Filter
-        popular={popular}
-        setFiltered={setFiltered}
-        activeGenre={activeGenre}
-        setActiveGenre={setActiveGenre}
-      />
-      <motion.div layout className='popular-movies'>
-        <AnimatePresence>
-          {filtered.map((movie, index) => {
-            //add reduce() in here to prevent duplicates
-            return <Movie key={movie.id} movie={movie} number={index + 1} />;
-          })}
-        </AnimatePresence>
-      </motion.div>
+      <div className='container'>
+        <Filter
+          popular={popular}
+          setFiltered={setFiltered}
+          activeGenre={activeGenre}
+          setActiveGenre={setActiveGenre}
+        />
+        <motion.div layout className='popular-movies'>
+          <AnimatePresence>
+            {filtered.map((movie, index) => {
+              //add reduce() in here to prevent duplicates
+              return <Movie key={movie.id} movie={movie} number={index + 1} />;
+            })}
+          </AnimatePresence>
+        </motion.div>
+      </div>
     </div>
   );
 }

@@ -5,6 +5,10 @@
   grid-row-gap: 2rem;
 }
 
+.container {
+  margin: 2% 5% 2% 5%;
+}
+
 img {
   width: 100%;
   height: auto;
@@ -65,7 +69,6 @@ img {
   text-align: left;
   flex-direction: column;
   display: flex;
-  border-radius: 10px;
   height: 80vh;
   background-image: url('/public/avatar-backdrop.jpeg');
   background-size: cover;
