@@ -10,6 +10,12 @@ Use the package manager [npm](https://www.npmjs.com/) to install packages requir
 npm install
 ```
 
+Then 
+
+```bash
+npm start
+```
+
 ## Motivation
 
 I wanted practice using `useState`, `props` and ternary expressions to create instant filtering as well as using `fetch` and `map` to display data in an appealing and useful way. I also coded a `for` loop to iterate over the TMDb API pagination (limited to 20 movies per page) to pull the top 100 results from TMDb.
